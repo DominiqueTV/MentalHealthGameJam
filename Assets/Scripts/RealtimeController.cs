@@ -13,19 +13,12 @@ namespace ETS.Realtime
 
         [SerializeField] private bool debug;
 
+        [SerializeField] private float time;
+        [SerializeField] private float timeInterval = 10;
+        [SerializeField] private bool didCheck = false;
+        [SerializeField] public GameObject[] players;
+
         Normal.Realtime.Realtime realtime;
-
-        [SerializeField] private GameObject[] players;
-
-        private bool didUpdateList = false;
-        private bool didSendConnectEvent = false;
-        private bool didSendDisconnectEvent = false;
-
-        public delegate void PlayerEnteredRoom();
-        public static event PlayerEnteredRoom onPlayerEnteredRoom;
-
-        public delegate void PlayerExitedRoom();
-        public static event PlayerExitedRoom onPlayerExitedRoom;
 
 
         private void Start()
@@ -33,43 +26,23 @@ namespace ETS.Realtime
             realtime = GetComponent<Normal.Realtime.Realtime>();
         }
 
-
-
-        void UpdatePlayerList()
+        private void LateUpdate()
         {
-            // Not an optimal way of finding players in the scene
+            // find players every so often
+            time += Time.deltaTime;
+            if (Mathf.RoundToInt(time) % timeInterval == 0 && !didCheck)
+            {
+                CheckForPlayers();
+                didCheck = true;
+            }
+            else { didCheck = false; }
+        }
+
+        void CheckForPlayers()
+        {
             players = GameObject.FindGameObjectsWithTag("Player");
-            didUpdateList = true;
+            if (debug) Debug.Log("Reloading Player List");
         }
-
-        void InvokeConnectedEvent()
-        {
-            onPlayerEnteredRoom.Invoke();
-            didSendConnectEvent = true;
-        }
-
-        void InvokeDisconnectedEvent()
-        {
-            onPlayerExitedRoom.Invoke();
-            didSendDisconnectEvent = true;
-        }
-
-
-        private void Update()
-        {
-            if (realtime.connected && !didUpdateList && !didSendConnectEvent)
-            {
-                UpdatePlayerList();
-                InvokeConnectedEvent();
-            }
-
-            if (realtime.disconnected && !didUpdateList && !didSendDisconnectEvent)
-            {
-                UpdatePlayerList();
-                InvokeDisconnectedEvent();
-            }
-        }
-
 
         // Button controls
         [Button]
