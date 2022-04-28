@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatingObj: {fileID: 454018565}
   stopWatch: {fileID: 458101959}
-  speed: 8000
+  speed: 16000
 --- !u!23 &454018568
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3906,7 +3906,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.65
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -6640,7 +6640,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -36031,7 +36031,7 @@ PrefabInstance:
     - target: {fileID: 6335963790726984724, guid: 639c1bf76085b1a44a9de230e5441ca1,
         type: 3}
       propertyPath: far clip plane
-      value: 700
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6335963790918765001, guid: 639c1bf76085b1a44a9de230e5441ca1,
         type: 3}
