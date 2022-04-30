@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Distant Lands_Stlylized Water
+  m_Shader: {fileID: 4800000, guid: 957b96a3ba84b7a4e872de08e23858c8, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CausticTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterNormals:
+        m_Texture: {fileID: 2800000, guid: dd2fd2df93418444c8e280f1d34deeb5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaveCrest:
+        m_Texture: {fileID: 2800000, guid: 9fbef4b79ca3b784ba023cb1331520d5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AbsorptionStrength: 0.2
+    - _CausticIntensity: 0
+    - _CausticScale: 0
+    - _CausticSpeed: 0
+    - _CrestScale: 0
+    - _CrestSpeed: 0
+    - _Distortion: 0.5
+    - _FoamIntensity: 1
+    - _FoamScale: 10
+    - _FoamScrollSpeed: 1
+    - _Murkiness: 1.34
+    - _NormalDepth: 0
+    - _NormalScale: 1
+    - _WaveCrestIntensity: 0.057
+    - __dirty: 1
+    m_Colors:
+    - _DepthColor: {r: 0.062077258, g: 0.21553075, b: 0.2924528, a: 0}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 0.6745098}
+    - _SurfaceColor: {r: 0.61877, g: 0.8083055, b: 0.9716981, a: 0}
+    - _WaveColor: {r: 0.047169805, g: 0.047169805, b: 0.047169805, a: 0}
+  m_BuildTextureStacks: []
