@@ -61,12 +61,12 @@ Material:
     - _DetailNormalMapScale: 1
     - _Dither: 1
     - _DstBlend: 0
-    - _ExponentB: 5
-    - _ExponentT: 2.32
+    - _ExponentB: 1
+    - _ExponentT: 2.5
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Intensity: 1
+    - _Intensity: 0.19
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

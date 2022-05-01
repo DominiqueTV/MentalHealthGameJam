@@ -105,3 +105,4 @@ Material:
     - _SecondaryWindDirection: {r: 1, g: 0, b: 1, a: 0}
     - _TopColor: {r: 0.9098039, g: 0.08235292, b: 0.0905424, a: 0}
     - _WindDirection: {r: 1, g: 0, b: 1, a: 0}
+  m_BuildTextureStacks: []

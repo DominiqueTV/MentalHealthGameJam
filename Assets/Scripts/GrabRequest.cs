@@ -24,10 +24,14 @@ namespace ETS.Realtime
 
         private void Update()
         {
+            // need to check if item is already being held
             if (grabInteractable.isSelected)
             {
-                realtimeTransform.RequestOwnership();
-                //realtimeView.RequestOwnership();
+                if (!realtimeTransform.isOwnedRemotelySelf || realtimeTransform.isUnownedSelf)
+                {
+                    realtimeTransform.RequestOwnership();
+                    realtimeView.RequestOwnership();
+                }
             }
         }
 
