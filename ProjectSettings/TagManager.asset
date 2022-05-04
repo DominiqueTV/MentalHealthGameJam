@@ -37,11 +37,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - HandPlayer
+  - Hand
+  - Grabbable
   - Item
-  - 
+  - Grabbing
   m_SortingLayers:
   - name: Default
     uniqueID: 0
