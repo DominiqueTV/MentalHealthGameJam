@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3600229488799557863}
   - component: {fileID: 3685917408004752569}
   - component: {fileID: 3685393706437025075}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireEmbers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4737,7 +4737,7 @@ GameObject:
   - component: {fileID: 3596133848798247967}
   - component: {fileID: 3685253570647437353}
   - component: {fileID: 3684510901530738173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9616,7 +9616,8 @@ GameObject:
   - component: {fileID: 3595380436565954765}
   - component: {fileID: 3595380436565954754}
   - component: {fileID: 3595380436565954755}
-  m_Layer: 0
+  - component: {fileID: 7698175267500020498}
+  m_Layer: 6
   m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9703,7 +9704,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3595380436565954753}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
@@ -9931,6 +9932,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8bf05b188fbce4e905a7d29cea8490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7698175267500020498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595380436565954753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822bc9090447b9c40833509c4a32e597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreMe: 0
+  body: {fileID: 0}
+  hightlightMaterial: {fileID: 0}
+  isGrabbable: 1
+  CopySettings: {fileID: 0}
+  singleHandOnly: 0
+  allowHeldSwapping: 1
+  instantGrab: 0
+  ignoreWeight: 1
+  maintainGrabOffset: 0
+  parentOnGrab: 1
+  throwPower: 1
+  jointBreakForce: 3500
+  showAdvancedSettings: 1
+  handType: 0
+  grabType: 0
+  useGentleGrab: 1
+  makeChildrenGrabbable: 1
+  pullApartBreakOnly: 1
+  customGrabJoint: {fileID: 0}
+  ignoreReleaseTime: 0.5
+  grabPriorityWeight: 1
+  heldPositionOffset: {x: 0, y: 0, z: 0}
+  heldRotationOffset: {x: 0, y: 0, z: 0}
+  jointedBodies: []
+  heldIgnoreColliders: []
+  showEvents: 1
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  showAdvancedEvents: 0
+  onSqueeze:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnsqueeze:
+    m_PersistentCalls:
+      m_Calls: []
+  onHighlight:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnhighlight:
+    m_PersistentCalls:
+      m_Calls: []
+  OnJointBreak:
+    m_PersistentCalls:
+      m_Calls: []
+  lockHandOnGrab: 0
 --- !u!1 &3595380437681516297
 GameObject:
   m_ObjectHideFlags: 0
@@ -9942,7 +10005,7 @@ GameObject:
   - component: {fileID: 3596373929437442209}
   - component: {fileID: 3700191987821319079}
   - component: {fileID: 3685118228573672927}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10425,7 +10488,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 0
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 5
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -14642,7 +14705,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -14679,7 +14742,7 @@ GameObject:
   - component: {fileID: 3596373930802855993}
   - component: {fileID: 3572458011028799263}
   - component: {fileID: 3582438231946328629}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14761,7 +14824,7 @@ GameObject:
   - component: {fileID: 3572458009807577223}
   - component: {fileID: 3460450884007880717}
   - component: {fileID: 3582438232027028071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
