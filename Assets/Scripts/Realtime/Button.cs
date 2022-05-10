@@ -1,4 +1,6 @@
 using Normal.Realtime;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace ETS.Realtime
 {
@@ -20,30 +22,52 @@ namespace ETS.Realtime
         }
 
 
+        [SerializeField] private UnityEvent ButtonIsPressed;
+        [SerializeField] private UnityEvent ButtonIsNotPressed;
+        [SerializeField] private bool didInvoke = false;
+
+
+        private void Update()
+        {
+            // Invokes the unity event if the button is pressed
+            if(pressed && !didInvoke)
+            {
+                ButtonIsPressed.Invoke();
+                didInvoke = true;
+            }
+
+            if (!pressed && didInvoke) 
+            {
+                ButtonIsNotPressed.Invoke();
+                didInvoke = false;
+            }
+            
+        }
+
+
         private void OnTriggerStay(UnityEngine.Collider other)
         {
             if (other.gameObject.tag == "Player")
-                if (!pressed) pressed = true;
-        }
-
-
-        /*
-        private void OnTriggerEnter(UnityEngine.Collider other)
-        {
-            if (other.gameObject.tag == "Player")
             {
-                if (!pressed) pressed = true;
+                if (!pressed)
+                {
+                    pressed = true;
+                }
             }
         }
-        */
+
 
         private void OnTriggerExit(UnityEngine.Collider other)
         {
             if (other.gameObject.tag == "Player")
+            {
                 pressed = false;
+            }
         }
         
 
+
+        // Editor Buttons
         [EasyButtons.Button]
         private void ToggleButton()
         {
