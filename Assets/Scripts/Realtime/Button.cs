@@ -23,11 +23,26 @@ namespace ETS.Realtime
         private void OnTriggerStay(UnityEngine.Collider other)
         {
             if (other.gameObject.tag == "Player")
+                if (!pressed) pressed = true;
+        }
+
+
+        /*
+        private void OnTriggerEnter(UnityEngine.Collider other)
+        {
+            if (other.gameObject.tag == "Player")
             {
-                if (!model.isPressed) model.isPressed = true;
-                else model.isPressed = false;
+                if (!pressed) pressed = true;
             }
         }
+        */
+
+        private void OnTriggerExit(UnityEngine.Collider other)
+        {
+            if (other.gameObject.tag == "Player")
+                pressed = false;
+        }
+        
 
         [EasyButtons.Button]
         private void ToggleButton()
