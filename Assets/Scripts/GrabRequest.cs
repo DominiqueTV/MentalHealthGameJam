@@ -32,7 +32,7 @@ namespace ETS.Realtime
                 if (!realtimeTransform.isOwnedRemotelySelf || realtimeTransform.isUnownedSelf)
                 {
                     realtimeTransform.RequestOwnership();
-                    realtimeView.RequestOwnership();
+                    //realtimeView.RequestOwnership();
                 }
             }
 
@@ -41,7 +41,7 @@ namespace ETS.Realtime
                 if (!realtimeTransform.isOwnedRemotelySelf || realtimeTransform.isUnownedSelf)
                 {
                     realtimeTransform.RequestOwnership();
-                    realtimeView.RequestOwnership();
+                    //realtimeView.RequestOwnership();
                 }
             }
         }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8281472383799784704}
   m_Layer: 0
-  m_Name: ClonePlayerWithParent
-  m_TagString: Player
+  m_Name: ClonePlayerWithParentNetwork
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ClonePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 961007937919156005, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 961007938191481141, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961007938759322096, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 961007938823205161, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250321120679549915, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250321122233492981, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030186567497246876, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030186569047054002, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687108182513182351, guid: eb04c2c30be50c74590001c05cac3a36,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb04c2c30be50c74590001c05cac3a36, type: 3}
