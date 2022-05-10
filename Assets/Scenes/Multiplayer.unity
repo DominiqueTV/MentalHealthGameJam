@@ -2820,7 +2820,7 @@ MonoBehaviour:
   _syncRotation: 1
   _syncScale: 1
   _syncVelocity: 1
-  _maintainOwnershipWhileSleeping: 1
+  _maintainOwnershipWhileSleeping: 0
 --- !u!114 &258066092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,7 +3439,7 @@ MonoBehaviour:
   _syncRotation: 1
   _syncScale: 1
   _syncVelocity: 1
-  _maintainOwnershipWhileSleeping: 1
+  _maintainOwnershipWhileSleeping: 0
 --- !u!114 &321457886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7386,6 +7386,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Realtime Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127811858234610534, guid: d04191a123f1f004f8aee2391ab26780,
+        type: 3}
+      propertyPath: _maintainOwnershipWhileSleeping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9127811858234610535, guid: d04191a123f1f004f8aee2391ab26780,
         type: 3}
@@ -14355,7 +14360,7 @@ MonoBehaviour:
   _syncRotation: 1
   _syncScale: 1
   _syncVelocity: 1
-  _maintainOwnershipWhileSleeping: 1
+  _maintainOwnershipWhileSleeping: 0
 --- !u!114 &1611571861
 MonoBehaviour:
   m_ObjectHideFlags: 0
