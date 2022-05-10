@@ -64,7 +64,7 @@ MonoBehaviour:
   _localAvatarPrefab: {fileID: 4164702571295949880, guid: ce7c49786f1372540b333148724d2eab,
     type: 3}
   _localPlayer:
-    root: {fileID: 6335963790918765012, guid: 639c1bf76085b1a44a9de230e5441ca1, type: 3}
+    root: {fileID: 0}
     head: {fileID: 0}
     leftHand: {fileID: 0}
     rightHand: {fileID: 0}
