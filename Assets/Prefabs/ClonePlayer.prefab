@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 7325811025999603311}
   - component: {fileID: 7438547070371591216}
   - component: {fileID: 961007937443580898}
+  - component: {fileID: 5550604260960164244}
   m_Layer: 6
   m_Name: ClonePlayer
   m_TagString: Player
@@ -383,6 +384,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!320 &5550604260960164244
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961007937443580927}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 8792ca163957cf646a4a13036eceeb35, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 1
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: -3560542804181655269, guid: 8792ca163957cf646a4a13036eceeb35, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6302901361911077125, guid: 8792ca163957cf646a4a13036eceeb35, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9129707038757373018, guid: 8792ca163957cf646a4a13036eceeb35, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &961007937919156000
 GameObject:
   m_ObjectHideFlags: 0

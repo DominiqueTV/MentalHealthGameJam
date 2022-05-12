@@ -7,7 +7,7 @@ using Autohand;
 
 public class TouchToggle : HandTouchEvent
 {
-    public AvatarRecorder recorder;
+    public AvatarRecorderV2 recorder;
 
     [SerializeField] private bool isOn;
 
