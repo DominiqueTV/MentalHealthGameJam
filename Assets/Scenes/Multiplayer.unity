@@ -13830,9 +13830,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35555bcf46172444a8445e02205c2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 7400000, guid: 18fb78584dcb25141b13bf8d2895286d, type: 2}
+  animClip:
+  - {fileID: 7400000, guid: 4bcad20e80e13a24caee9abb190f81ec, type: 2}
+  - {fileID: 7400000, guid: fdd28ba9d90001e47bbcb959a9ec5012, type: 2}
+  - {fileID: 7400000, guid: 18a44511b5c537f45aca1c70ff5fc0de, type: 2}
+  - {fileID: 7400000, guid: fcc19659f7eabea4e909ba78f2abcbf9, type: 2}
+  - {fileID: 7400000, guid: 419e9d06c7fa42746bf957b018ddd41c, type: 2}
   clonePrefab: {fileID: 8281472383799784705, guid: 0e6389a284d2baa4fbb1dc8ccbf8366c,
     type: 3}
+  cloneInstance: {fileID: 0}
+  cloneDirector: {fileID: 0}
+  cloneAnimator: {fileID: 0}
+  count: 0
 --- !u!1001 &1377325659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19103,7 +19112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1000010413203122
 GameObject:
@@ -48026,7 +48035,7 @@ PrefabInstance:
     - target: {fileID: 1389080871369065382, guid: 83c0902934a498e40b8875898d134c25,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1389080871369065382, guid: 83c0902934a498e40b8875898d134c25,
         type: 3}
@@ -48532,14 +48541,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2918777916487410841}
-  m_LocalRotation: {x: 0, y: -0.48496225, z: 0.8745351, w: 0}
-  m_LocalPosition: {x: 0.0754, y: 0.89, z: 10.4}
+  m_LocalRotation: {x: -0.88384783, y: -0.025460003, z: 0.013449101, w: -0.46688756}
+  m_LocalPosition: {x: 0.0754, y: 0.89, z: 9.62}
   m_LocalScale: {x: 0.258501, y: 0.02138, z: 0.109529994}
   m_Children:
   - {fileID: 5367216320811765549}
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 58.02, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 124.31, y: 0, z: 356.7}
 --- !u!114 &2918777916487410843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66676,6 +66685,7 @@ GameObject:
   - component: {fileID: 185075802310331368}
   - component: {fileID: 1810340279}
   - component: {fileID: 1366867289}
+  - component: {fileID: 7668830300579112570}
   m_Layer: 3
   m_Name: OpenXRAutoHandPlayer
   m_TagString: Untagged
@@ -66699,6 +66709,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &7668830300579112570
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668830300579112568}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 8792ca163957cf646a4a13036eceeb35, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 1
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -4369033797935305315, guid: 8792ca163957cf646a4a13036eceeb35, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8761786773187685903, guid: 8792ca163957cf646a4a13036eceeb35, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -471141245474701149, guid: 8792ca163957cf646a4a13036eceeb35, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &7668830300767111832
 PrefabInstance:
   m_ObjectHideFlags: 0
