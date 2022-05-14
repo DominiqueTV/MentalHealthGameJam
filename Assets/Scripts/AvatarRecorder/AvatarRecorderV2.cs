@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Networking;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 
-public class AvatarRecorderV2 : MonoBehaviour
+public partial class AvatarRecorderV2 : MonoBehaviour
 {
+    [SerializeField] private MicRecorder mic;
+
+    public string savePath = "Assets/Animations/";
+
     [SerializeField] float playbackSpeed = 1f;
 
     public AnimationClip animClip;
@@ -16,10 +24,17 @@ public class AvatarRecorderV2 : MonoBehaviour
     public GameObject clonePool;
     [SerializeField] private GameObject cloneInstance;
     [SerializeField] private PlayableDirector cloneDirector;
+    private TimelineAsset timeline;
     [SerializeField] private Animator cloneAnimator;
+    [SerializeField] private AudioSource cloneAudioSource;
+    [SerializeField] private AudioClip cloneClip;
     [SerializeField] private int count = 0;
 
     [SerializeField]  private List<Transform> childrenList;
+
+    public UnityEvent OnStartRecording;
+    public UnityEvent OnStopRecording;
+    public UnityEvent OnPlayRecording;
 
     private void Start()
     {
@@ -37,7 +52,6 @@ public class AvatarRecorderV2 : MonoBehaviour
     }
 
 
-    // Cant create an animation clip at runtine
     private AnimationClip CreateNewClip()
     {
         AnimationClip c = new AnimationClip();
@@ -45,11 +59,10 @@ public class AvatarRecorderV2 : MonoBehaviour
         return c;
     }
 
-
-
     [EasyButtons.Button]
     public void StartRecording()
     {
+        //Animation
         animClip = CreateNewClip();
 
         // Create recorder and record the script GameObject. It records this game object
@@ -57,6 +70,12 @@ public class AvatarRecorderV2 : MonoBehaviour
 
         // Bind all the Transforms on the GameObject and all its children.
         m_Recorder.BindComponentsOfType<Transform>(gameObject, true);
+
+        // Audio
+        // capture mic audio
+        if (mic) mic.StartCapture();
+
+        OnStartRecording.Invoke();
     }
 
     [EasyButtons.Button]
@@ -67,9 +86,21 @@ public class AvatarRecorderV2 : MonoBehaviour
 
         if (m_Recorder.isRecording)
         {
+            // Animation
             // Save the recorded session to the clip.
             m_Recorder.SaveToClip(animClip); // if (animClip.Count < count) 
-       
+            // Save the animation clip into a file
+            string clipname = savePath + animClip.name + ".anim";
+            AssetDatabase.CreateAsset(animClip, clipname);
+            AssetDatabase.SaveAssets();
+
+            // Audio
+            // Stop mic
+            if (mic) mic.StopCapture();
+
+            OnStopRecording.Invoke();
+
+            // Find and cache components
             if (childrenList != null)
             {
                 Transform clone = childrenList[count];
@@ -79,45 +110,114 @@ public class AvatarRecorderV2 : MonoBehaviour
                 if (cloneInstance.GetComponentInChildren<PlayableDirector>()) cloneDirector = cloneInstance.GetComponentInChildren<PlayableDirector>();
 
                 // try get the clone instance's animator component
-                if (cloneInstance.GetComponentInChildren<Animator>()) cloneAnimator = cloneInstance.GetComponentInChildren<Animator>();                
+                if (cloneInstance.GetComponentInChildren<Animator>()) cloneAnimator = cloneInstance.GetComponentInChildren<Animator>();    
+                
+                // Try to get the clone's audio source component
+                if (cloneInstance.GetComponentInChildren<AudioSource>()) cloneAudioSource = cloneInstance.GetComponentInChildren<AudioSource>();                
             }
-                               
-            PlayRecording();
             count++;
         }
     }
 
     [EasyButtons.Button]
-    private void PlayRecording()
+    private void LoadLastAudioFile()
+    {
+        StartCoroutine(GetAudioClip());
+
+        cloneAudioSource.clip = cloneClip;
+    }
+
+    [EasyButtons.Button]
+    public void PlayRecording()
+    {
+        // Create and set an instance of a timeline asset for the director
+        timeline = new TimelineAsset();
+        cloneDirector.playableAsset = timeline;
+
+        // Load the last file captures by the mic
+        LoadLastAudioFile();
+
+        CreateAnimationTimelineAsset();
+        CreateAudioTimelineAsset();
+
+        cloneInstance.SetActive(true);
+
+        // 4. Play the timeline
+        cloneDirector?.Play();
+
+        OnPlayRecording.Invoke();
+    }
+
+    //[EasyButtons.Button]
+    private void CreateAnimationTimelineAsset()
     {
         // 1. Create new Animation Track in director's TimelineAsset
-        TimelineAsset asset = cloneDirector?.playableAsset as TimelineAsset;
+        //TimelineAsset timeline = cloneDirector?.playableAsset as TimelineAsset;
 
         // Note - we're deleting the track if it exists already, since we want to generate everything on the spot for this example
-        foreach (TrackAsset track in asset.GetOutputTracks())
+        foreach (TrackAsset track in timeline.GetOutputTracks())
             if (track.name == cloneInstance.name)
-                asset.DeleteTrack(track);
-        AnimationTrack newTrack = asset.CreateTrack<AnimationTrack>(cloneInstance.name);
+                timeline.DeleteTrack(track);
+        AnimationTrack newTrack = timeline.CreateTrack<AnimationTrack>(cloneInstance.name + "Anim");
 
         // 2. Make the created animation track reference the animationToAdd
         TimelineClip clip = newTrack.CreateClip(animClip);
-        clip.start = 0.1f;
+        clip.start = 0.0f;
         clip.timeScale = playbackSpeed;
         clip.duration = clip.duration / clip.timeScale;
 
         // 3. Edit the director's TimelineInstance and configure the bindings to reference objectToAnimate
         cloneDirector?.SetGenericBinding(newTrack, cloneAnimator);
 
-        // 4. Play the timeline
-        cloneDirector?.Play();
-
         // set position and rotation
         cloneInstance.transform.position = transform.position;
         cloneInstance.transform.rotation = transform.rotation;
-        
-        cloneInstance.SetActive(true);
+
+
     }
 
+    //[EasyButtons.Button]
+    private void CreateAudioTimelineAsset()
+    {
+        //TimelineAsset timeline = cloneDirector?.playableAsset as TimelineAsset;
+
+        // Note - we're deleting the track if it exists already, since we want to generate everything on the spot for this example
+        foreach (TrackAsset line in timeline.GetOutputTracks())
+            if (line.name == cloneInstance.name)
+                timeline.DeleteTrack(line);
+        /// Create new track
+        AudioTrack track = timeline.CreateTrack<AudioTrack>(cloneInstance.name + "Audio");
+
+        /// Create an audio clip in the track
+        var audioAsset = (AudioPlayableAsset)(track.CreateClip<AudioPlayableAsset>().asset);
+        audioAsset.name = "Clone" + count + "AudioAsset"; /// Not entirely sure if this is necessary
+        audioAsset.clip = cloneClip; /// This is an AudioClip type object which works when adding it to a regular AudioSource component not related to the timeline
+        audioAsset.clip.name = "Clone" + count + "AudioClip";
+
+        /// Bind the audio clip to the audio player gameobject
+        /// Note: this seems to be optional, but without doing this, the Audio Source field in your timeline track will still say "None" as pictured in my original post
+        cloneDirector?.SetReferenceValue("Clone" + count + "Audio", cloneAudioSource.gameObject);
+        cloneDirector?.SetGenericBinding(track, cloneAudioSource);
+    }
+
+
+    private IEnumerator GetAudioClip()
+    {
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(mic.GetLastAudioClip(), AudioType.WAV))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                cloneClip = DownloadHandlerAudioClip.GetContent(www);
+            }
+        }
+        //yield return new WaitForSeconds(10);
+    }
 
     void LateUpdate()
     {

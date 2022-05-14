@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Autohand;
-
-
+using UnityEngine.Events;
 
 public class TouchToggle : HandTouchEvent
 {
     public AvatarRecorderV2 recorder;
 
     [SerializeField] private bool isOn;
+
+    public UnityEvent ToggleOn;
+    public UnityEvent ToggleOff;
 
     private void Start()
     {
@@ -27,13 +29,13 @@ public class TouchToggle : HandTouchEvent
         {
             isOn = false;
 
-            recorder.StopRecording();
+            ToggleOff?.Invoke();
         }
         else 
         { 
             isOn = true; 
 
-            recorder.StartRecording();
+            ToggleOn?.Invoke();
         }
     }
 }

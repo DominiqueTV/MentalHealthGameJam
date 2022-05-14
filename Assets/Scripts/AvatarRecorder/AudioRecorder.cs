@@ -44,7 +44,7 @@ public class AudioRecorder : MonoBehaviour
 
     void Update()
     {
-        micRecording = Microphone.IsRecording(" ");
+        micRecording = Microphone.IsRecording("Oculus");
 
         if (micRecording)
         {
@@ -96,7 +96,7 @@ public class AudioRecorder : MonoBehaviour
         }
         else
         {
-            goAudioSource.clip = Microphone.Start(null, false, (int)tmerec, 44100);
+            goAudioSource.clip = Microphone.Start("Oculus", false, (int)tmerec, 44100);
         }
     }
 
@@ -105,7 +105,7 @@ public class AudioRecorder : MonoBehaviour
     {
         micRecording = false;
         tmeend = Time.time;
-        Microphone.End(null); //Stop the audio recording
+        Microphone.End("Oculus"); //Stop the audio recording
 
     }
 
