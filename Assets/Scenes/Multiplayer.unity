@@ -4968,8 +4968,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.4866314, y: 2.6328874, z: 1}
-  m_Center: {x: 0, y: 0.8164437, z: 0}
+  m_Size: {x: 12.969641, y: 2.6328874, z: 11.237116}
+  m_Center: {x: 0, y: 0.8164437, z: -5.118558}
 --- !u!4 &469225819
 Transform:
   m_ObjectHideFlags: 0
@@ -13242,6 +13242,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 469225819}
     m_Modifications:
+    - target: {fileID: 1677637014348446620, guid: 0e6389a284d2baa4fbb1dc8ccbf8366c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677637014348446620, guid: 0e6389a284d2baa4fbb1dc8ccbf8366c,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3032898a7346b5346a74895ff8b63a8a, type: 3}
+    - target: {fileID: 4285351269884081427, guid: 0e6389a284d2baa4fbb1dc8ccbf8366c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4605500626935580993, guid: 0e6389a284d2baa4fbb1dc8ccbf8366c,
         type: 3}
       propertyPath: m_WrapMode
