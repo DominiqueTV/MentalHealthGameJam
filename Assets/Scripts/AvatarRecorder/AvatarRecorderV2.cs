@@ -10,12 +10,12 @@ using UnityEngine.Networking;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-
+[RequireComponent(typeof(MicRecorder))]
 public partial class AvatarRecorderV2 : MonoBehaviour
 {
     [SerializeField] private MicRecorder mic;
 
-    public string savePath = "Assets/Animations/";
+    public string savePath = "Assets/Clones/Animations/";
 
     [SerializeField] float playbackSpeed = 1f;
 
@@ -49,10 +49,13 @@ public partial class AvatarRecorderV2 : MonoBehaviour
                 clonePool.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
+
+        // Caches the mic
+        if (!mic) mic = GetComponent<MicRecorder>();
     }
 
 
-    private AnimationClip CreateNewClip()
+    private AnimationClip CreateNewAnimClip()
     {
         AnimationClip c = new AnimationClip();
         c.name = "Clone" + count;
@@ -63,7 +66,7 @@ public partial class AvatarRecorderV2 : MonoBehaviour
     public void StartRecording()
     {
         //Animation
-        animClip = CreateNewClip();
+        animClip = CreateNewAnimClip();
 
         // Create recorder and record the script GameObject. It records this game object
         m_Recorder = new GameObjectRecorder(gameObject);
