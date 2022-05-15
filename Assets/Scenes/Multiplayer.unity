@@ -4010,6 +4010,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 72898930}
     m_Modifications:
+    - target: {fileID: 4605500626935580993, guid: 0e6389a284d2baa4fbb1dc8ccbf8366c,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605500626935580993, guid: 0e6389a284d2baa4fbb1dc8ccbf8366c,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[13].key
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8281472383799784704, guid: 0e6389a284d2baa4fbb1dc8ccbf8366c,
         type: 3}
       propertyPath: m_RootOrder

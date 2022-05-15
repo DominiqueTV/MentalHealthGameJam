@@ -124,7 +124,7 @@ public partial class AvatarRecorderV2 : MonoBehaviour
     {
         StartCoroutine(GetAudioClip());
 
-        cloneAudioSource.clip = cloneClip;
+        if (cloneClip) cloneAudioSource.clip = cloneClip;
     }
 
     [EasyButtons.Button]
@@ -172,8 +172,6 @@ public partial class AvatarRecorderV2 : MonoBehaviour
         // set position and rotation
         cloneInstance.transform.position = transform.position;
         cloneInstance.transform.rotation = transform.rotation;
-
-
     }
 
     //[EasyButtons.Button]
@@ -191,7 +189,7 @@ public partial class AvatarRecorderV2 : MonoBehaviour
         /// Create an audio clip in the track
         var audioAsset = (AudioPlayableAsset)(track.CreateClip<AudioPlayableAsset>().asset);
         audioAsset.name = "Clone" + count + "AudioAsset"; /// Not entirely sure if this is necessary
-        audioAsset.clip = cloneClip; /// This is an AudioClip type object which works when adding it to a regular AudioSource component not related to the timeline
+        if (cloneClip) audioAsset.clip = cloneClip; /// This is an AudioClip type object which works when adding it to a regular AudioSource component not related to the timeline
         audioAsset.clip.name = "Clone" + count + "AudioClip";
 
         /// Bind the audio clip to the audio player gameobject
