@@ -8,38 +8,34 @@ using UnityEngine.Timeline;
 public class CloneTrigger : MonoBehaviour
 {
    [SerializeField] private Collider triggerVolume;
-   [SerializeField] private PlayableDirector director;
+   [SerializeField] private List<PlayableDirector> directors;
 
     private void Start()
     {
-        triggerVolume = GetComponent<Collider>();   
+        triggerVolume = GetComponent<Collider>();  
     }
 
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-            if (triggerVolume != null)
-                if(director != null)
-                    if (!director.playableGraph.IsPlaying())
-                        director.Play();
-                    else
-                        director.Stop();
-    }
-    */
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
             if (triggerVolume != null)
-                if (director != null)
-                    director.Play();
+                if (directors != null)
+                    foreach (var director in directors) 
+                    { 
+                        director.Play();
+                        director.gameObject.SetActive(true);
+                    }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
             if (triggerVolume != null)
-                if (director != null)
-                    director.Stop();
+                if (directors != null)
+                    foreach (var director in directors)
+                    {
+                        director.Stop();
+                        director.gameObject.SetActive(false);
+                    }
     }
 }
